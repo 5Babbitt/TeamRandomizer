@@ -19,7 +19,10 @@ function randomizeTeams () {
 
 function updatePage(players, teams) {
   const priorityQueueText = players.leftoverList.join('\n')
-  document.getElementById("priorityListText").value = priorityQueueText
+  const priorityQueueTextArea = document.getElementById("priorityListText")
+
+  priorityQueueTextArea.value = priorityQueueText
+  adjustTextArea(priorityQueueTextArea)
 
   const teamsElement = document.getElementById("teams")
   _clearTeamsHTML(teamsElement)
@@ -121,3 +124,27 @@ function _addPlayerToTeam(playerList, team) {
   playerList.splice(index, 1)
   team.members.push(nextPlayer)
 }
+
+function adjustTextArea(element) {
+  element.style.height = ''
+  element.style.height = `${element.scrollHeight + 5}px`
+}
+
+const playerList = document.getElementById("playerListText")
+playerList.value = `jazzi_
+Reeceboi
+Taku
+D_e_m_p_s_e_y
+Fluff
+Eri_Oniel
+ChilledAnarchist
+sarah ♡
+DylPickle
+suicidal__potato
+Cyke0
+shana
+bronwin
+latabo
+snakely`
+
+adjustTextArea(playerList)

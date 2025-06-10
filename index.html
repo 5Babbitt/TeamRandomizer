@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Randomizer</title>
-    <script src="scripts/index.js"></script>
+    <script src="scripts/index.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,17 +18,17 @@
                 <input type="number" id="numTeams" name="Number of teams" min="2" value="2">
             </div>
             <div class="numPlayers">
-                <h3>No. of players per team</h3>
+                <p>No. of players per team</p>
                 <input type="number" id="numTeamPlayers" name="Number of players per team" min="2" value="6">
             </div>
             <div class="playerList">
                 <h3>Players</h3>
-                <textarea name="Players" id="playerListText"></textarea>
+                <textarea name="Players" id="playerListText" oninput="adjustTextArea(this)"></textarea>
             </div>
             <div class="priorityList">
                 <h3>Priority Queue</h3>
                 <P>This section will be automatically filled with anyone not added to a team</P>
-                <textarea name="Priority Queue" id="priorityListText"></textarea>
+                <textarea name="Priority Queue" id="priorityListText" oninput="adjustTextArea(this)"></textarea>
             </div>
             <input type="button" id="randomTeamsBtn" value="Form Teams" onclick="randomizeTeams()">
         </div>
