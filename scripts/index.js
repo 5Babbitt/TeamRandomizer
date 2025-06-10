@@ -84,7 +84,7 @@ function _createteams() {
   for (let i = 1; i <= numTeams; i++) {
     teams.push(
       {
-        name: `team ${i}`,
+        name: `Team ${i}`,
         members: []
       }
     )

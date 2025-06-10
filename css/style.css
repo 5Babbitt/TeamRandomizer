@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@300..700&family=Dosis:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 :root {
-    --bgColour: #0e0e18;
+    --bgColour: #1d1d1d;
     --textColour: white;
+
+    /* Input Panel */
+    --buttonBG: rgb(61, 61, 61);
+    --textFieldBG: rgb(12, 12, 12);
+
+    /* Tables */
+    --tableHeaderBG: rgb(41, 41, 41);
+    --tableBorder: rgb(255, 255, 255);
+    --tableDimLine: rgba(255, 255, 255, 0.103);
 }
 
 * {
@@ -46,7 +55,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
 }
 
 .inputsSection {
@@ -54,6 +62,15 @@ body {
     display: flex;
     flex-direction: column;
     flex-basis: 25%;
+    gap: 2vh;
+    background-color: var(--textFieldBG);
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.inputsSection div, h3, p {
+    background-color: var(--textFieldBG);
 }
 
 .outputsSection {
@@ -70,4 +87,35 @@ body {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
+    gap: 2vw;
+}
+
+#randomTeamsBtn {
+    width: 50%;
+    background-color: var(--buttonBG);
+}
+
+textarea, input {
+    background-color: black;
+    width: 15vw;
+    padding: 2.5%;
+    text-align: left;
+}
+
+table, th, td {
+    padding: 1vh;
+    width: 15vw;
+    border: 1px solid var(--tableBorder);
+    border-collapse: collapse;
+}
+
+td {
+    font-weight: 400;
+    font-size: small;
+}
+
+th {
+    font-weight: 700;
+    font-size: large;
+    background-color: var(--tableHeaderBG);
 }
