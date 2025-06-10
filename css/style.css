@@ -4,6 +4,12 @@
     --bgColour: #1d1d1d;
     --textColour: white;
 
+    /* Header */
+    --headerBG: rgb(1, 1, 1);
+
+    /* Footer */
+    --footerBG: rgb(1, 1, 1);
+
     /* Input Panel */
     --buttonBG: rgb(61, 61, 61);
     --textFieldBG: rgb(12, 12, 12);
@@ -40,6 +46,11 @@ body {
     font-size: large;
     top: 0;
     flex-wrap: nowrap;
+    background-color: var(--headerBG);
+}
+
+.header h1 {
+    background-color: inherit;
 }
 
 .footer {
@@ -47,6 +58,7 @@ body {
     padding: 2.5vh 1.25vw;
     position: fixed;
     bottom: 0;
+    background-color: var(--footerBG);
 }
 
 .content {
@@ -70,7 +82,7 @@ body {
 }
 
 .inputsSection div, h3, p {
-    background-color: var(--textFieldBG);
+    background-color: inherit;
 }
 
 .outputsSection {

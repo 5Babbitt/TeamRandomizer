@@ -35,6 +35,8 @@ function updatePage(players, teams) {
 
 function _createTeamHTMLElement(team) {
   const teamDiv = document.createElement("div")
+  teamDiv.className = "tableClass"
+
   const teamTable = document.createElement("table")
 
   // Header
