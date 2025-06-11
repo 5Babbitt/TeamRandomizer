@@ -1,24 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@300..700&family=Dosis:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Comfortaa:wght@600&family=Dosis:wght@200..800&display=swap');
 
 :root {
-    --bgColour: #1d1d1d;
-    --textColour: white;
 
-    /* Header */
-    --headerBG: rgb(1, 1, 1);
+    /* Fonts */
+    --headerFont: "Anton SC", sans-serif;
+    --textFont: "Comfortaa", sans-serif;
+    --subTextFont: "Dosis", sans-serif;
+    
+    --bg: rgb(3, 13, 2);
+    --text: rgb(212, 250, 211);
+    --pri: rgb(153, 241, 140);
+    --sec: rgb(19, 157, 91);
+    --acc: rgb(41, 228, 167);
 
-    /* Footer */
-    --footerBG: rgb(1, 1, 1);
+    /* Colours */
+    --bgColour: 3, 13, 2;
+    --textColour: 212, 250, 211;
+    --primary: 153, 241, 140;
+    --secondary: 19, 157, 91;
+    --accent: 41, 228, 167;
 
-    /* Input Panel */
-    --buttonBG: rgb(61, 61, 61);
-    --buttonBorder: rgb(61, 61, 61);
-    --textFieldBG: rgb(12, 12, 12);
-    --textFieldBorder: rgb(12, 12, 12);
-
-    /* Tables */
-    --tableHeaderBG: rgb(41, 41, 41);
-    --tableBorder: rgb(255, 255, 255);
+    /* Alpha Values */
+    --header-footer-alpha: 0.333;
+    --inputPanel-alpha: 0.15;
+    --textArea-alpha: 0.333;
+    --button-alpha: 0.6667;
+    --tableBG-alpha: 0.2;
+    --tableHeader-alpha: 0.5;
 }
 
 * {
@@ -26,44 +34,41 @@
     margin: 0;
     text-align: center;
     box-sizing: border-box;
-    background-color: var(--bgColour);
-    color: var(--textColour);
 }
 
 body {
+    background-color: rgba(var(--bgColour), 1);
+    color: rgb(var(--textColour));
     height: 100vh;
     overflow-x: hidden;
+    padding-bottom: 8vh;
 }
 
 .header, .footer {
+    background-color: rgba(var(--secondary), var(--header-footer-alpha));
+    color: var(--primary);
     left: 0;
     padding: 1.25vh 10vw;
     width: 100%;
 }
 
 .header {
-    font-family: "Bebas Neue", serif;
-    font-size: large;
+    font-family: var(--headerFont);
+    font-size: x-large;
+    font-weight: 400;
+    font-style: normal;
     top: 0;
     flex-wrap: nowrap;
-    background-color: var(--headerBG);
-}
-
-.header h1 {
-    background-color: inherit;
 }
 
 .footer {
-    font-family: "Comfortaa", serif;
     padding: 2.5vh 1.25vw;
     position: fixed;
     bottom: 0;
-    background-color: var(--footerBG);
 }
 
 .content {
-    font-family: "Comfortaa", serif;
-    padding: 1% 2%;
+    padding: 2.5vh 5vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -71,19 +76,22 @@ body {
 }
 
 .inputsSection {
+    background-color: rgba(var(--primary), var(--inputPanel-alpha));
     padding: 2%;
     display: flex;
     flex-direction: column;
     flex-basis: 25%;
     gap: 2vh;
-    background-color: var(--textFieldBG);
     justify-content: flex-start;
     align-items: center;
     align-content: center;
+    border: 2px solid rgba(var(--accent), 1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 10px rgb(var(--accent), 0.1);
 }
 
-.inputsSection div, h3, p {
-    background-color: inherit;
+.inputsSection div, h3, h5 {
+    background-color: none;
 }
 
 .outputsSection {
@@ -103,16 +111,61 @@ body {
     gap: 2vw;
 }
 
+
 #randomTeamsBtn {
+    background-color: rgba(var(--accent), var(--button-alpha));
+    border: 2px solid rgba(var(--accent), 1);
+    text-align: center;
     width: 50%;
-    background-color: var(--buttonBG);
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+#randomTeamsBtn:hover {
+    background-color: rgba(var(--accent), 1);
+    border-color: rgba(var(--secondary), 1);
+    color: rgba(var(--bgColour), 1);
+}
+
+#randomTeamsBtn:focus {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
+}
+
+h3 {
+    font-family: var(--textFont);
+}
+
+h5 {
+    font-family: var(--subTextFont);
+}
+
+a {
+    color: rgb(var(--secondary));
+}
+
+a:focus {
+    color: rgb(var(--accent));
 }
 
 textarea, input {
-    background-color: black;
-    width: 15vw;
+    background-color: rgba(var(--secondary), var(--textArea-alpha));
+    border: 1px solid rgb(var(--accent));
+    color: rgb(var(--textColour));
+    width: min(15vw, 200px);
+    min-width: 150px;
     padding: 2.5%;
     text-align: left;
+    border-radius: 4px;
+}
+
+textarea:focus, input:focus {
+    border-color: rgb(var(--accent));
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
 }
 
 textarea {
@@ -120,9 +173,10 @@ textarea {
 }
 
 table, th, td {
+    background-color: rgba(var(--tableBG), var(--tableBG-alpha));
+    border: 1px solid rgb(var(--textColour));
     padding: 1vh;
     width: 15vw;
-    border: 1px solid var(--tableBorder);
     border-collapse: collapse;
 }
 
@@ -132,7 +186,7 @@ td {
 }
 
 th {
+    background-color: rgba(var(--accent), var(--tableHeader-alpha));
     font-weight: 700;
     font-size: large;
-    background-color: var(--tableHeaderBG);
 }
