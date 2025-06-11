@@ -2,19 +2,32 @@ let numTeams = 2;
 let numPlayersPerTeam = 2;
 
 const teamSelection = {
-  playerList: undefined,
+  playerList: [],
   activeSelectList: [],
   leftoverList: []
 }
 
+function init() {
+  // get cookies and apply their values to html elements
+  const docs = _getInputDocs()
+
+  docs.numTeams.value = _getCookie("numTeams")
+  docs.numPlayers.value = _getCookie("numTeamPlayers")
+  docs.playerList.value = JSON.parse(_getCookie("playerListText")).join('\n')
+  docs.priorityList.value = JSON.parse(_getCookie("priorityListText")).join('\n')
+
+  adjustTextArea(docs.playerList)
+  adjustTextArea(docs.priorityList)
+}
+
+// Public Functions
 function randomizeTeams () {
   const players = _getPlayers()
   const teams = _createteams()
   const randomizedTeams = _randomizeTeams(players, teams)
 
-  console.log(teams)
-
   updatePage(players, randomizedTeams)
+  saveCookies()
 }
 
 function updatePage(players, teams) {
@@ -33,6 +46,39 @@ function updatePage(players, teams) {
   })
 }
 
+function saveCookies() {
+  const docs = _getInputDocs()
+  
+  _setCookie("numTeams", docs.numTeams.value, 7)
+  _setCookie("numTeamPlayers", docs.numPlayers.value, 7)
+  _setCookie("playerListText", _encodeStringList(docs.playerList.value), 7)
+  _setCookie("priorityListText", _encodeStringList(docs.priorityList.value), 7)
+
+  console.log(decodeURIComponent(document.cookie))
+}
+
+function _getInputDocs() {
+  return {
+    numTeams: document.getElementById("numTeams"),
+    numPlayers: document.getElementById("numTeamPlayers"),
+    playerList: document.getElementById("playerListText"),
+    priorityList: document.getElementById("priorityListText")
+  }
+}
+
+function _encodeStringList(listString) {
+  const arrayList = listString.split("\n").filter((name) => name.length > 1)
+  const encodedList = encodeURIComponent(JSON.stringify(arrayList))
+
+  return encodedList
+}
+
+function adjustTextArea(element) {
+  element.style.height = ''
+  element.style.height = `${element.scrollHeight + 5}px`
+}
+
+// Private Functions
 function _createTeamHTMLElement(team) {
   const teamDiv = document.createElement("div")
   teamDiv.className = "tableClass"
@@ -127,26 +173,28 @@ function _addPlayerToTeam(playerList, team) {
   team.members.push(nextPlayer)
 }
 
-function adjustTextArea(element) {
-  element.style.height = ''
-  element.style.height = `${element.scrollHeight + 5}px`
+function _setCookie(cname, cvalue, exdays) {
+  const d = new Date()
+  d.setTime(d.getTime() + (exdays*24*60*60*1000))
+  let expires = "expires="+ d.toUTCString()
+
+  cvalue
+
+  document.cookie = `${cname}=${cvalue};${expires}`
 }
 
-const playerList = document.getElementById("playerListText")
-playerList.value = `jazzi_
-Reeceboi
-Taku
-D_e_m_p_s_e_y
-Fluff
-Eri_Oniel
-ChilledAnarchist
-sarah ♡
-DylPickle
-suicidal__potato
-Cyke0
-shana
-bronwin
-latabo
-snakely`
-
-adjustTextArea(playerList)
+function _getCookie(cname) {
+  let name = `${cname}=`
+  let decodedCookie = decodeURIComponent(document.cookie)
+  let ca = decodedCookie.split(';')
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1)
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length)
+    }
+  }
+  return
+}
