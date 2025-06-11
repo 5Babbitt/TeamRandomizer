@@ -11,8 +11,11 @@ function init() {
   // get cookies and apply their values to html elements
   const docs = _getInputDocs()
 
-  docs.numTeams.value = _getCookie("numTeams")
-  docs.numPlayers.value = _getCookie("numTeamPlayers")
+  const teamsNum = _getCookie("numTeams")
+  const teamPlayersNum = _getCookie("numTeamPlayers")
+
+  docs.numTeams.value = (teamsNum > 1) ? teamsNum : numTeams
+  docs.numPlayers.value = (teamPlayersNum > 1) ? teamPlayersNum : numPlayersPerTeam
   docs.playerList.value = JSON.parse(_getCookie("playerListText")).join('\n')
   docs.priorityList.value = JSON.parse(_getCookie("priorityListText")).join('\n')
 
@@ -123,8 +126,11 @@ function _getPlayers() {
 
 function _createteams() {
   // get num players and teams
-  numTeams = document.getElementById("numTeams").value
-  numPlayersPerTeam = document.getElementById("numTeamPlayers").value
+  const _numTeams = document.getElementById("numTeams").value
+  const _numPlayersPerTeam = document.getElementById("numTeamPlayers").value
+
+  numTeams = (_numTeams > 1) ? _numTeams : 2
+  numPlayersPerTeam = (_numPlayersPerTeam > 1) ? _numPlayersPerTeam : 2
 
   const teams = []
 
@@ -177,9 +183,6 @@ function _setCookie(cname, cvalue, exdays) {
   const d = new Date()
   d.setTime(d.getTime() + (exdays*24*60*60*1000))
   let expires = "expires="+ d.toUTCString()
-
-  cvalue
-
   document.cookie = `${cname}=${cvalue};${expires}`
 }
 
