@@ -12,12 +12,13 @@
 
     /* Input Panel */
     --buttonBG: rgb(61, 61, 61);
+    --buttonBorder: rgb(61, 61, 61);
     --textFieldBG: rgb(12, 12, 12);
+    --textFieldBorder: rgb(12, 12, 12);
 
     /* Tables */
     --tableHeaderBG: rgb(41, 41, 41);
     --tableBorder: rgb(255, 255, 255);
-    --tableDimLine: rgba(255, 255, 255, 0.103);
 }
 
 * {
@@ -31,7 +32,6 @@
 
 body {
     height: 100vh;
-    overflow-y: hidden;
     overflow-x: hidden;
 }
 
@@ -67,6 +67,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-bottom: 10vh;
 }
 
 .inputsSection {
@@ -76,7 +77,7 @@ body {
     flex-basis: 25%;
     gap: 2vh;
     background-color: var(--textFieldBG);
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     align-content: center;
 }
@@ -112,6 +113,10 @@ textarea, input {
     width: 15vw;
     padding: 2.5%;
     text-align: left;
+}
+
+textarea {
+    resize: none;
 }
 
 table, th, td {
