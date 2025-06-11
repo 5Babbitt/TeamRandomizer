@@ -41,7 +41,6 @@ body {
     color: rgb(var(--textColour));
     height: 100vh;
     overflow-x: hidden;
-    padding-bottom: 8vh;
 }
 
 .header, .footer {
@@ -58,12 +57,14 @@ body {
     font-weight: 400;
     font-style: normal;
     top: 0;
-    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .footer {
     padding: 2.5vh 1.25vw;
-    position: fixed;
     bottom: 0;
 }
 
@@ -72,7 +73,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-bottom: 10vh;
 }
 
 .inputsSection {
@@ -173,10 +173,11 @@ textarea {
 }
 
 table, th, td {
+    font-family: var(--textFont);
     background-color: rgba(var(--tableBG), var(--tableBG-alpha));
     border: 1px solid rgb(var(--textColour));
     padding: 1vh;
-    width: 15vw;
+    min-width: 15vw;
     border-collapse: collapse;
 }
 
