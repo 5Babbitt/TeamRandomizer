@@ -26,8 +26,11 @@
                 <textarea name="Players" id="playerListText" oninput="adjustTextArea(this)"></textarea>
             </div>
             <div class="priorityList">
-                <h3>Priority Queue</h3>
-                <h5>This section will be automatically filled with anyone not added to a team</h5>
+                <h3>Leftover Players</h3>
+                <h5>
+                    This section will be automatically filled with anyone not added to a team. 
+                    They will get first priority when forming teams.
+                </h5>
                 <textarea name="Priority Queue" id="priorityListText" oninput="adjustTextArea(this)" disabled></textarea>
             </div>
             <input type="button" id="randomTeamsBtn" value="Form Teams" onclick="randomizeTeams()">
