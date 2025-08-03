@@ -78,6 +78,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
     flex: 1;
 }
 
@@ -141,7 +142,7 @@ h1 {
     text-shadow: 3px 3px rgba(var(--accent), 0.5);
 }
 
-h5 {
+h5, small {
     font-family: var(--subTextFont);
 }
 

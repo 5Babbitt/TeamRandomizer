@@ -15,11 +15,11 @@
         <div class="inputsSection">
             <div class="numTeams">
                 <h3>No. of teams</h3>
-                <input type="number" id="numTeams" name="Number of teams" min="2" value="2">
+                <input type="number" id="numTeams" name="Number of teams" min="1" value="2">
             </div>
             <div class="numPlayers">
                 <h3>No. of players per team</h3>
-                <input type="number" id="numTeamPlayers" name="Number of players per team" min="2" value="6">
+                <input type="number" id="numTeamPlayers" name="Number of players per team" min="1" value="5">
             </div>
             <div class="playerList">
                 <h3>Players</h3>
@@ -27,10 +27,10 @@
             </div>
             <div class="priorityList">
                 <h3>Leftover Players</h3>
-                <h5>
+                <small>
                     This section will be automatically filled with anyone not added to a team. 
                     They will get first priority when forming teams.
-                </h5>
+                </small>
                 <textarea name="Priority Queue" id="priorityListText" oninput="adjustTextArea(this)" disabled></textarea>
             </div>
             <input type="button" id="randomTeamsBtn" value="Form Teams" onclick="randomizeTeams()">
@@ -43,7 +43,7 @@
     </div>
     <div class="footer">
         <h3>A <a href="https://github.com/5Babbitt/TeamRandomizer" target="_blank">Babbitt</a> Creation</h3>
-        <h5>This site uses cookies to save input values</h5>
+        <small>This site uses cookies to save input values</small>
     </div>
 </body>
 </html>

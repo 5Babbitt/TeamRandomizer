@@ -129,8 +129,8 @@ function _createteams() {
   const _numTeams = document.getElementById("numTeams").value
   const _numPlayersPerTeam = document.getElementById("numTeamPlayers").value
 
-  numTeams = (_numTeams > 1) ? _numTeams : 2
-  numPlayersPerTeam = (_numPlayersPerTeam > 1) ? _numPlayersPerTeam : 2
+  numTeams = (_numTeams > 1) ? _numTeams : 1
+  numPlayersPerTeam = (_numPlayersPerTeam > 1) ? _numPlayersPerTeam : 1
 
   const teams = []
 
